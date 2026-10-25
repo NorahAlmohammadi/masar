@@ -252,3 +252,6 @@ h2.title-ro { font-size: 21px; margin: 0; }
 
 .linkbox { display: flex; gap: 8px; align-items: center; background: var(--surface-2); border-radius: 10px; padding: 8px 10px; direction: ltr; font-size: 12.5px; word-break: break-all; }
 .menu-row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); }
+.editor th, .content-ro th { background: var(--surface-2); text-align: start; font-weight: 600; vertical-align: top; }
+.editor tbody tr > th:first-child:not(:only-child), .content-ro tbody tr > th:first-child:not(:only-child) { width: 34%; }
+.editor table, .content-ro table { display: block; overflow-x: auto; }
