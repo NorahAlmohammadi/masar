@@ -549,7 +549,7 @@ function modal(html, onMount) {
   });
 }
 const prompt2 = (title, val) => modal(`<h3>${esc(title)}</h3><input class="input" id="pv" value="${esc(val)}"><div class="actions" style="margin-top:14px"><button class="btn primary" id="ok">حفظ</button><button class="btn ghost" data-close>إلغاء</button></div>`,
-  (m, close) => { const i = m.querySelector('#pv'); i.focus(); const ok = () => close(i.value.trim() || undefined); m.querySelector('#ok').onclick = ok; i.onkeydown = (e) => e.key === 'Enter' && ok(); });
+  (m, close) => { const i = m.querySelector('#pv'); i.focus(); const ok = () => close(i.value.trim() || undefined); m.querySelector('#ok').onclick = ok; i.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); ok(); } }); });
 const confirm2 = (msg, label = 'تأكيد') => modal(`<h3>تأكيد</h3><p>${esc(msg)}</p><div class="actions"><button class="btn primary" id="ok" style="background:var(--danger);border-color:var(--danger)">${esc(label)}</button><button class="btn ghost" data-close>إلغاء</button></div>`,
   (m, close) => { m.querySelector('#ok').onclick = () => close(true); });
 const dateDialog = (title, val) => modal(`<h3>${esc(title)}</h3><input type="date" class="input" id="dv" value="${esc(val || '')}"><div class="actions" style="margin-top:14px"><button class="btn primary" id="ok">حفظ</button><button class="btn ghost" id="clr">إزالة الموعد</button><button class="btn ghost" data-close>إلغاء</button></div>`,
