@@ -115,6 +115,10 @@ async function boot() {
     ls.set('masar_sv', hash.get('s'));
     history.replaceState(null, '', location.pathname + location.search);
   }
+  if (hash.get('sec')) {
+    S.view = 'thesis'; S.sel = hash.get('sec');
+    history.replaceState(null, '', location.pathname + location.search);
+  }
   const { data: { session } } = await sb.auth.getSession();
   if (session && session.user.email.toLowerCase() === OWNER_EMAIL) return startStudent();
   const tok = ls.get('masar_sv');
